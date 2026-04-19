@@ -1,0 +1,403 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram name="Page-1" id="WAnjJ-WZA1M24wWgd-aH">
+    <mxGraphModel dx="7765" dy="4960" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="HX6bfBNfl0VPmnkVLwpI-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b&gt;To Design a&amp;nbsp;Ticket Booking System:&amp;nbsp;&lt;/b&gt;A platform that allows users to discover and purchase tickets for various entertainment options like movies, concerts, and live events.&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;div&gt;&lt;b style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;1. Functional Requirements&lt;/b&gt;&lt;div&gt;&lt;ol&gt;&lt;li&gt;The user must be able to discover events using filters such as the Event Title, the City/Location, and the specific Date of the show.&lt;/li&gt;&lt;li&gt;The user must be able to view comprehensive details for a specific event, including the No of Seats (available vs. occupied), a detailed Description, and Metadata (cast, duration, language, ratings&lt;/li&gt;&lt;li&gt;The system must allow a user to select a seat and complete a transaction to Book a Ticket.&lt;/li&gt;&lt;/ol&gt;&lt;div&gt;&lt;b&gt;2. Non-Functional Requirements&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;ol&gt;&lt;li&gt;The system must be designed to support 100 Million Daily Active Users (DAU)&lt;/li&gt;&lt;li&gt;When users are searching or viewing an event, the system must prioritize being &quot;always online&quot; (High Availability). It is better to show slightly older data than to show an error page.&lt;/li&gt;&lt;li&gt;When a user is booking a specific ticket, the system must be Highly Consistent. Two people should never be able to book the exact same seat at the exact same time.&lt;/li&gt;&lt;/ol&gt;&lt;div&gt;&lt;b&gt;3. Core Entities&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;ol&gt;&lt;li&gt;User&lt;/li&gt;&lt;li&gt;Event (Movie, Concert, Play)&lt;/li&gt;&lt;li&gt;Venue (Theater, Stadium, Arena)&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Show (Specific timing of an event at a venue)&lt;/span&gt;&lt;/li&gt;&lt;li&gt;Seat&lt;/li&gt;&lt;li&gt;Booking (Transaction record)&lt;/li&gt;&lt;/ol&gt;&lt;div&gt;&lt;b&gt;4. API Design&lt;/b&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-weight: bold; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;1.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;GET /v1/events&amp;nbsp; &amp;nbsp; &amp;nbsp; (&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Query Params: title, city, date&lt;/span&gt;&lt;code data-path-to-node=&quot;7,0,1,0,0&quot; data-index-in-node=&quot;27&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;)&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;code data-path-to-node=&quot;7,0,1,0,0&quot; data-index-in-node=&quot;27&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;--&amp;nbsp;&lt;span data-path-to-node=&quot;7,0,1,1,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Returns a list of matching events.&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;code data-path-to-node=&quot;7,0,1,0,0&quot; data-index-in-node=&quot;27&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span data-path-to-node=&quot;7,0,1,1,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font face=&quot;Helvetica&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;2.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;GET /v1/events/{event_id}&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;--&amp;nbsp;&lt;/span&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Returns detailed metadata and description for a specific event.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;3.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;GET /v1/shows/{show_id}/seats&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;--&amp;nbsp;&lt;/span&gt;&lt;span data-path-to-node=&quot;7,2,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Returns the seat map and current availability status for a specific show.&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span data-path-to-node=&quot;7,2,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span data-path-to-node=&quot;7,2,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;4.&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;POST /v1/bookings&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;(BODY: event, show and seat)&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span data-path-to-node=&quot;7,1,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span data-path-to-node=&quot;7,2,1,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;font-style: italic; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;font-style: normal;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;--&amp;nbsp;&lt;/span&gt;&lt;span data-path-to-node=&quot;7,3,1,1,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Locks the selected seats and initiates the booking transaction.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="630" width="490" x="-80" y="-70" as="geometry" />
+        </mxCell>
+        <mxCell id="t_WZei9zVG-OLPZbtzlG-1" parent="1" style="text;whiteSpace=wrap;html=1;" value="&lt;li&gt;&lt;p data-path-to-node=&quot;11,0,0&quot;&gt;&lt;b data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;0&quot;&gt;Database Schema:&lt;/b&gt;&lt;/p&gt;&lt;/li&gt;&lt;span data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;ol style=&quot;&quot;&gt;&lt;li style=&quot;&quot;&gt;&lt;span data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;0&quot; style=&quot;font-weight: bold; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;User:&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;code data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;6&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;10&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;name&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;16&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;email&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,0,0&quot; data-index-in-node=&quot;23&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;phone&lt;/code&gt;&lt;/li&gt;&lt;li style=&quot;font-weight: bold;&quot;&gt;&lt;b data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Event:&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;7&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;11&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;title&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;18&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;description&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;31&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;cast&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;37&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;duration&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;47&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;language&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,1,0&quot; data-index-in-node=&quot;57&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;rating&lt;/code&gt;&lt;/li&gt;&lt;li style=&quot;font-weight: bold;&quot;&gt;&lt;b data-path-to-node=&quot;11,2,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Venue:&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;code data-path-to-node=&quot;11,2,0&quot; data-index-in-node=&quot;7&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,2,0&quot; data-index-in-node=&quot;11&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;name&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,2,0&quot; data-index-in-node=&quot;17&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;city&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,2,0&quot; data-index-in-node=&quot;23&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;address&lt;/code&gt;&lt;/li&gt;&lt;li style=&quot;font-weight: bold;&quot;&gt;&lt;b data-path-to-node=&quot;11,3,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Show:&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;/span&gt;&lt;code data-path-to-node=&quot;11,3,0&quot; data-index-in-node=&quot;6&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,3,0&quot; data-index-in-node=&quot;10&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;event_id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,3,0&quot; data-index-in-node=&quot;20&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;venue_id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,3,0&quot; data-index-in-node=&quot;30&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;start_time&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,3,0&quot; data-index-in-node=&quot;42&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;end_time&lt;/code&gt;&lt;/li&gt;&lt;li style=&quot;&quot;&gt;&lt;b data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;0&quot; style=&quot;font-weight: bold; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Seat:&lt;/b&gt;&lt;span style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;/span&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;6&quot; style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;id&lt;/code&gt;&lt;span style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;10&quot; style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;venue_id&lt;/code&gt;&lt;span style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;20&quot; style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;row_label&lt;/code&gt;&lt;span style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;31&quot; style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;seat_number&lt;/code&gt;&lt;span style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;44&quot; style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;type, &lt;/code&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;44&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;b&gt;status&lt;/b&gt;&lt;/code&gt;&lt;code data-path-to-node=&quot;11,4,0&quot; data-index-in-node=&quot;44&quot; style=&quot;font-weight: normal; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt; (available/locked/booked)&lt;/code&gt;&lt;/li&gt;&lt;li style=&quot;font-weight: bold;&quot;&gt;&lt;b data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;0&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Booking:&lt;/b&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;code data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;9&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;13&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;user_id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;22&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;show_id&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;31&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;total_amount&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;45&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;status&lt;/code&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;, &lt;/span&gt;&lt;code data-path-to-node=&quot;11,6,0&quot; data-index-in-node=&quot;53&quot; style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); font-weight: normal;&quot;&gt;timestamp&lt;/code&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="160" width="640" x="680" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="140" width="256" x="883.6800000000003" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-14" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Kg23gRIPnRaanflfhp87-23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="1333" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="255" width="230" x="-63.820000000000164" y="1240" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-18" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="Users" vertex="1">
+          <mxGeometry height="60" width="60" x="-200" y="1281.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-19" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.iot_device_gateway;" value="" vertex="1">
+          <mxGeometry height="110" width="117.53" x="-7.5900000000001455" y="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b style=&quot;text-wrap-mode: nowrap;&quot;&gt;API Gateway &amp;amp; Load Balancers&lt;/b&gt;&lt;div&gt;&lt;b style=&quot;text-wrap-mode: nowrap;&quot;&gt;Routing&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b style=&quot;text-wrap-mode: nowrap;&quot;&gt;Authorization and Authentication&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;b&gt;Rate Limiting&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap;&quot;&gt;&lt;b&gt;SSL Termination&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100" width="220" x="-58.820000000000164" y="1380" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-21" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.016;entryY=0.334;entryDx=0;entryDy=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-63.820000000000164" y="1311.67" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-22" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="673.6800000000003" y="1360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#fff;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Event Service&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="313.67999999999984" y="1302.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-27" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Kg23gRIPnRaanflfhp87-50">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="463.67999999999984" y="1125" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-28" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/Search_Services.svg;" value="" vertex="1">
+          <mxGeometry height="52" width="72" x="373.67999999999984" y="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-29" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" value="Search Service" vertex="1">
+          <mxGeometry height="30" width="100" x="363.67999999999984" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-32" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="103.67999999999984" y="965" as="sourcePoint" />
+            <mxPoint x="223.67999999999984" y="965" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-33" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.579;entryY=-0.003;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="68.67999999999984" y="1230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-34" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" value="User Service" vertex="1">
+          <mxGeometry height="30" width="90" x="23.679999999999836" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-35" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="103.67999999999984" y="972" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-36" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="233.67999999999984" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-37" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.296;entryY=0.876;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-38" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Authentication" vertex="1">
+          <mxGeometry height="30" width="60" x="83.67999999999984" y="1111" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-39" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="User DB" vertex="1">
+          <mxGeometry height="30" width="60" x="227.67999999999984" y="1004" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-45" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="908.6800000000003" y="1272.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-46" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="987.6800000000003" y="1269.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-47" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="1059.6800000000003" y="1270.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-48" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Read Replicas" vertex="1">
+          <mxGeometry height="30" width="110" x="956.6800000000003" y="1341.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-49" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="833.6800000000003" y="1110" />
+              <mxPoint x="833.6800000000003" y="1110" />
+            </Array>
+            <mxPoint x="453.67999999999984" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-50" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#ffffff;fillColor=#232F3E;dashed=0;verticalLabelPosition=middle;verticalAlign=bottom;align=center;html=1;whiteSpace=wrap;fontSize=10;fontStyle=1;spacing=3;shape=mxgraph.aws4.productIcon;prIcon=mxgraph.aws4.elasticsearch_service;" value="" vertex="1">
+          <mxGeometry height="70" width="70" x="963.6800000000003" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-51" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" value="Elastic Search&lt;div&gt;(indexed by City, Date etc)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="40" width="160" x="918.6800000000003" y="1155" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-52" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Kg23gRIPnRaanflfhp87-50">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1271.6800000000003" y="1130" />
+            </Array>
+            <mxPoint x="1271.2307692307686" y="1275.0000000000005" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-54" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Cache_Redis_Product.svg;" value="" vertex="1">
+          <mxGeometry height="42" width="50" x="683.6800000000003" y="1328.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-55" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Events (In Cache )" vertex="1">
+          <mxGeometry height="33.5" width="105" x="656.1800000000003" y="1371.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-56" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.007;entryY=0.319;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" target="Kg23gRIPnRaanflfhp87-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="793.6800000000003" y="1350" />
+              <mxPoint x="793.6800000000003" y="1295" />
+            </Array>
+            <mxPoint x="743.6800000000003" y="1350" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-57" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;strokeColor=#232F3E;fillColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="Event Organisers" vertex="1">
+          <mxGeometry height="60" width="60" x="-200" y="1390" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-58" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.016;entryY=0.334;entryDx=0;entryDy=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-63.820000000000164" y="1420.17" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-61" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.01;entryY=0.506;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-28">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="269.67999999999984" y="1270" />
+              <mxPoint x="269.67999999999984" y="1126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-81" parent="1" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.s3;fillColor=#E05243;gradientColor=none;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="435" y="1950" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-82" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="S3&lt;div&gt;(Static Assets Related&lt;/div&gt;&lt;div&gt;to event)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="160" x="390" y="2035" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-89" parent="1" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.user;" value="" vertex="1">
+          <mxGeometry height="60" width="67" x="23.679999999999836" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-91" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="130" y="1990" />
+              <mxPoint x="-176" y="1990" />
+            </Array>
+            <mxPoint x="410" y="1990" as="sourcePoint" />
+            <mxPoint x="-176.32000000000016" y="1470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-92" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;CDN&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="80" x="113.67999999999984" y="1950" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-93" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="View Events" vertex="1">
+          <mxGeometry height="30" width="90" x="368.67999999999984" y="1272.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-94" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000;strokeColor=#6c8ebf;" value="&lt;div&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;Catalog Service&lt;/font&gt;&lt;/div&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;(Event Details Management Service)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="200" x="323.67999999999984" y="1475" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-95" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="1390" />
+              <mxPoint x="260" y="1500" />
+            </Array>
+            <mxPoint x="170" y="1390" as="sourcePoint" />
+            <mxPoint x="320" y="1500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-96" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="985.6800000000003" y="1480" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-97" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1000" y="1470" as="sourcePoint" />
+            <mxPoint x="1000" y="1400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-98" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1012" y="1400" as="sourcePoint" />
+            <mxPoint x="1012" y="1470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-99" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="CDC&lt;div&gt;Pipeline&lt;/div&gt;" vertex="1">
+          <mxGeometry height="127.5" width="50" x="1250" y="1272.5" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-100" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="1510" as="sourcePoint" />
+            <mxPoint x="970" y="1510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-101" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="1280" y="1510" />
+            </Array>
+            <mxPoint x="1050" y="1510" as="sourcePoint" />
+            <mxPoint x="1280" y="1410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-102" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="update in Elastic Serach" vertex="1">
+          <mxGeometry height="30" width="150" x="1066.6800000000003" y="1480" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-103" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="210" y="1460" />
+              <mxPoint x="210" y="1680" />
+            </Array>
+            <mxPoint x="170" y="1460" as="sourcePoint" />
+            <mxPoint x="380" y="1680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-104" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Booking Service&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="170" x="380" y="1650" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-106" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;Event Db&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="30" width="110" x="940" y="1550" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-108" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="1680" />
+            </Array>
+            <mxPoint x="730" y="1680" as="sourcePoint" />
+            <mxPoint x="560" y="1680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-109" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="Bookings DB" vertex="1">
+          <mxGeometry height="30" width="90" x="719" y="1710" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-110" parent="1" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=12;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.payment;" value="Payment" vertex="1">
+          <mxGeometry height="70" width="120" x="403.67999999999984" y="1780" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-111" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-110" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="464" y="1720" as="sourcePoint" />
+            <mxPoint x="490" y="1670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-113" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;Payment Service&lt;/blockquote&gt;" vertex="1">
+          <mxGeometry height="30" width="150" x="373.67999999999984" y="1860" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-114" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="560" y="1690" as="sourcePoint" />
+            <mxPoint x="730" y="1690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-105" parent="1" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/Azure_Database_PostgreSQL_Server.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="48" x="740" y="1648" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-115" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="792" y="1940" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-116" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-115">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="692" y="1820" />
+              <mxPoint x="692" y="1970" />
+            </Array>
+            <mxPoint x="530" y="1820" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-117" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-115" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="682" y="1980" />
+              <mxPoint x="682" y="1838" />
+            </Array>
+            <mxPoint x="530" y="1838" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-118" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Success / Failure" vertex="1">
+          <mxGeometry height="30" width="60" x="602" y="1845" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-119" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Payment&lt;div&gt;Gateway&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="792" y="2005" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-120" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="530" y="1800" as="sourcePoint" />
+            <mxPoint x="980" y="1800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-121" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="90" width="290" x="985.6800000000003" y="1760" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-122" parent="1" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;fillColor=#FF6A00;strokeColor=none;shape=mxgraph.alibaba_cloud.kafka;" value="" vertex="1">
+          <mxGeometry height="42" width="56.699999999999996" x="1015.6800000000003" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-123" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Apache Kafka" vertex="1">
+          <mxGeometry height="30" width="60" x="1014.6800000000003" y="1814" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-124" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="PaymentStatus Consumer&lt;div&gt;(Updates Lock and Seat, Booking Status)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="157.34" x="1050" y="1650" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-126" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Booking/Payment Notifications" vertex="1">
+          <mxGeometry height="30" width="60" x="1125.6800000000003" y="1790" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-127" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="Payment Status Handling" vertex="1">
+          <mxGeometry height="30" width="160" x="660" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-128" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1130.6099999999997" y="1750" as="sourcePoint" />
+            <mxPoint x="1130" y="1710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-129" parent="1" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Cache_Redis_Product.svg;" value="" vertex="1">
+          <mxGeometry height="42" width="50" x="620" y="1558" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-130" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="Redis (For Seat Locking)" vertex="1">
+          <mxGeometry height="30" width="160" x="565" y="1593" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-131" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.479;entryY=0.984;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-130" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="642" y="1670" />
+            </Array>
+            <mxPoint x="560" y="1670" as="sourcePoint" />
+            <mxPoint x="600" y="1620" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-132" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="1680" />
+            </Array>
+            <mxPoint x="1040" y="1680" as="sourcePoint" />
+            <mxPoint x="810" y="1680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-133" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="890" y="1670" />
+              <mxPoint x="890" y="1590" />
+            </Array>
+            <mxPoint x="1040" y="1670" as="sourcePoint" />
+            <mxPoint x="730" y="1590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-134" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Kg23gRIPnRaanflfhp87-135">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1275.6800000000003" y="1800" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-135" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000;strokeColor=#fff;" value="Notification Service" vertex="1">
+          <mxGeometry height="60" width="200" x="1360" y="1770" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-136" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000;strokeColor=#fff;" value="Notification Providers&lt;div&gt;(SMTPs, FCN, APNS)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="210" x="1350" y="1920" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-137" edge="1" parent="1" source="Kg23gRIPnRaanflfhp87-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.527;entryY=-0.045;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-136">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-138" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0.47;entryY=1.04;entryDx=0;entryDy=0;entryPerimeter=0;" target="Kg23gRIPnRaanflfhp87-23" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="1600" />
+              <mxPoint x="460" y="1560" />
+              <mxPoint x="570" y="1560" />
+              <mxPoint x="570" y="1390" />
+              <mxPoint x="408" y="1390" />
+            </Array>
+            <mxPoint x="460" y="1650" as="sourcePoint" />
+            <mxPoint x="410" y="1390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Kg23gRIPnRaanflfhp87-139" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;autosize=1;resizable=0;" value="Seat Status Checking" vertex="1">
+          <mxGeometry height="30" width="140" x="383.67999999999984" y="1580" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

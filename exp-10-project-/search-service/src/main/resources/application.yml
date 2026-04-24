@@ -1,0 +1,20 @@
+spring:
+  elasticsearch:
+    uris: http://localhost:9200
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      auto-index-creation: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ${spring.application.name}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json:
+          trusted.packages: com.ecommerce.*
+
+server:
+  port: 9060

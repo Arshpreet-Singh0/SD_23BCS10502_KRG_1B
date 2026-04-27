@@ -1,4 +1,4 @@
-package LABEST;
+package EST_23BCS10502;
 
 interface SocialMedia{
     public void post();

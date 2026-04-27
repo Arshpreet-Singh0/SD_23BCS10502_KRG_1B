@@ -28,4 +28,9 @@ public class Ques2{
     public static void sharePost(SocialMedia media){
         media.post();
     }
+
+    public static void main(String[] args) {
+        Instagram insta = new Instagram();
+        sharePost(insta);
+    }
 }
